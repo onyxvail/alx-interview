@@ -15,24 +15,11 @@ def minOperations(n):
     Returns:
         int: The minimum number of operations required.
     """
-    if n <= 1:
-        return 0
-
-    operations = 0
-
-    for i in range(2, n + 1):
-        while n % i == 0:
-            n //= i
-            operations += i
-
-    return operations
-
-
-if __name__ == "__main__":
-    n1 = 4
-    print("Min # of operations to reach {} char: {}"
-          .format(n1, minOperations(n1)))
-
-    n2 = 12
-    print("Min # of operations to reach {} char: {}"
-          .format(n2, minOperations(n2)))
+    nb_operations = 0
+    min_operations = 2
+    while n > 1:
+        while n % min_operations == 0:
+            nb_operations += min_operations
+            n /= min_operations
+        min_operations += 1
+    return nb_operations
